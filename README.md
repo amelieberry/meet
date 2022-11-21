@@ -18,9 +18,9 @@ A serverless and progressive React application using test-driven development (TD
         
     **SCENARIOS** | **Given** |  **When** | **Then**
     ---------- | --- | --- | --- 
-    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
-    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
-    **Scenario 3** | user typed "Berlin" in city textbox and list of suggested cities is showing | user selects a city from list | city should be changed to the selction and user should receive a list of events in that city.
+    **Scenario 1** | the list of events is diplayed | the user scrolls through the events list | the event details should be hidden by default   
+    **Scenario 2** | the list of events is diplayed | user clicks on "show details" button | user should see the details of the event
+    **Scenario 3** | event detail is shown to user | user clicks on "hide details" | event details should be collapsed
 
 3. **Specify number of events.**
 
@@ -28,8 +28,8 @@ A serverless and progressive React application using test-driven development (TD
             
     **SCENARIOS** | **Given** |  **When** | **Then**
     ---------- | --- | --- | --- 
-    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
-    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
+    **Scenario 1** | number of shown event was not specified | the event list is displayed | user should see a list of 32 events per page by default   
+    **Scenario 2** | number of shown events was specified by user | the event list is displayed | user should see a list of the specified amount of events per page
 
 4. **Use the app when offline.**
 
@@ -37,8 +37,8 @@ A serverless and progressive React application using test-driven development (TD
             
     **SCENARIOS** | **Given** |  **When** | **Then**
     ---------- | --- | --- | --- 
-    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
-    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
+    **Scenario 1** | user is not connected to the internet | user accesses the app | app should show cached data
+    **Scenario 2** | user is not connected to the internet | app settings are changed by user | user should see an error message stating that they should first connect to the internet
 
 5. **Add an app shortcut to the home screen.**
 
@@ -50,7 +50,7 @@ A serverless and progressive React application using test-driven development (TD
                     
     **SCENARIOS** | **Given** |  **When** | **Then**
     ---------- | --- | --- | --- 
-    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events 
+    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a chart of upcoming events by city 
 
 ## Built with
 * React
