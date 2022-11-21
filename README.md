@@ -6,7 +6,7 @@ A serverless and progressive React application using test-driven development (TD
 
     > As a user, I should be able to filter events by city so that I can see the list events taking place in that city.
     
-    :------------: | **Given** |  **When** | **Then**
+                   | **Given** |  **When** | **Then**
     --- | --- | --- | --- 
     **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
     **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
