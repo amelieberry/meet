@@ -13,10 +13,44 @@ A serverless and progressive React application using test-driven development (TD
     **Scenario 3** | user typed "Berlin" in city textbox and list of suggested cities is showing | user selects a city from list | city should be changed to the selction and user should receive a list of events in that city.
 
 2. **Show/hide event details.**
+
+    > As a user, I would like to be able to show/hide event details so that I can see more/less information about an event.
+        
+    **SCENARIOS** | **Given** |  **When** | **Then**
+    ---------- | --- | --- | --- 
+    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
+    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
+    **Scenario 3** | user typed "Berlin" in city textbox and list of suggested cities is showing | user selects a city from list | city should be changed to the selction and user should receive a list of events in that city.
+
 3. **Specify number of events.**
+
+    > As a user, I would like to be able to specify the number of events I want to view in the app so that I can see more or fewer events in the events list at once.
+            
+    **SCENARIOS** | **Given** |  **When** | **Then**
+    ---------- | --- | --- | --- 
+    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
+    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
+
 4. **Use the app when offline.**
+
+    > As a user, I would like to be able to use the app when offline so that I can see the events I viewed the last time I was online.
+            
+    **SCENARIOS** | **Given** |  **When** | **Then**
+    ---------- | --- | --- | --- 
+    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events   
+    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
+
 5. **Add an app shortcut to the home screen.**
+
+    > As a user, I would like to be able to add the app shortcut to my home screen so that I can open the app faster.
+
 6. **View a chart showing the number of upcoming events by city.**
+
+    > As a user, I would like to be able to see a chart showing the upcoming events in each city so that I know what events are organized in which city.
+                    
+    **SCENARIOS** | **Given** |  **When** | **Then**
+    ---------- | --- | --- | --- 
+    **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a list of all upcoming events 
 
 ## Built with
 * React
