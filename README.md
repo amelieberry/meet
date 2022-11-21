@@ -5,11 +5,12 @@ A serverless and progressive React application using test-driven development (TD
 1. **Filter events by city.**
     > As a user, I should be able to filter events by city so that I can see the list events taking place in that city.
     
-    Scenarios: | **Scenario 1** |  **Scenario 2** | **Scenario 3**
+    --- | **Given** |  **When** | **Then**
     --- | --- | --- | --- 
-    **Given** | user hasn't searched of any city | the main page is open | user typed "Berlin" in city textbox and list of suggested cities is showing  
-    **When** | the user opens the app | user starts typing in city textbox | user selects a city from list
-    **Then** | the user shouls see a list of all upcoming events | user should see a list of suggested cities matching what they typed | city should be changed to the selction and user should receive a list of events in that city.
+    **Scenario 1** | user hasn't searched of any city | the user opens the app | the user should see a list of all upcoming events   
+    **Scenario 2** | the main page is open | user starts typing in city textbox | user should see a list of suggested cities matching what they typed 
+    **Scenario 3** | user typed "Berlin" in city textbox and list of suggested cities is showing | user selects a city from list | city should be changed to the selction and user should receive a list of events in that city.
+
 2. **Show/hide event details.**
 3. **Specify number of events.**
 4. **Use the app when offline.**
