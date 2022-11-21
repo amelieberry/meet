@@ -4,7 +4,7 @@ A serverless and progressive React application using test-driven development (TD
 ## Features, User Stories and Scenarios
 1. **Filter events by city.**
     > As a user, I should be able to filter events by city so that I can see the list events taking place in that city.
-     --- | **Scenario 1** |  **Scenario 2** | **Scenario 3**
+     Scenarios: | **Scenario 1** |  **Scenario 2** | **Scenario 3**
      --- | --- | --- | --- 
      **Given** | user hasn't searched of any city | the main page is open | user typed "Berlin" in city textbox and list of suggested cities is showing  
      **When** | the user opens the app | user starts typing in city textbox | user selects a city from list
