@@ -96,5 +96,32 @@ module.exports.getCalendarEvents = async (event) => {
   const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
-  return new Promise((resolve, reject) => {})
+  return new Promise((resolve, reject) => {
+    // get a list of events from "fullstackwebdev" Google Calendar using oAuth2Client for authentication
+    calendar.events.list(
+      {
+        calendarId: calendar_id,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      }
+    );
+  })
+  .then((results) => {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({ events: results.data.items }),
+    };
+  })
 }
