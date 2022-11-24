@@ -124,4 +124,11 @@ module.exports.getCalendarEvents = async (event) => {
       body: JSON.stringify({ events: results.data.items }),
     };
   })
+  .catch((err) => {
+    console.error(err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify(err),
+    };
+  });
 }
