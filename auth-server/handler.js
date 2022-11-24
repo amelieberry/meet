@@ -85,3 +85,8 @@ module.exports.getAccessToken = async (event) => {
     };
   });
 };
+
+// 3rd Step - get Calendar Events
+module.exports.getCalendarEvents = async (event) => {
+  return new Promise((resolve, reject) => {})
+}
