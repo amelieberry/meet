@@ -48,7 +48,8 @@ describe('<Event /> component', () => {
     });
 
     // check if details are hidden by default and that the button's text is set to "Show Details"
-    test('do not render details by default', () => {
+    test('details are hidden by default', () => {
+        expect(EventWrapper.state('isHidden')).toBe(true);
         expect(EventWrapper.find('.details')).toHaveLength(0);
         expect(EventWrapper.find('.toggle-details').text()).toBe('Show Details');
     });
@@ -64,6 +65,7 @@ describe('<Event /> component', () => {
     // simulate click on toggle-details button and check if .details exists
     test('render details of the event on click', () => {
         EventWrapper.find('.toggle-details').simulate('click');
+        expect(EventWrapper.state('isHidden')).toBe(false);
         expect(EventWrapper.find('.details')).toHaveLength(1);
     });
 
@@ -83,5 +85,11 @@ describe('<Event /> component', () => {
      * and button text should toggle to "Show Details"
      */
 
-    // simulate click on hide-details button, check if .details has been hidden and that button text changed
+    // simulate click on toggle-details button, check if .details has been hidden and that button text changed
+    test('rendered details get hidden on click', () => {
+        EventWrapper.find('.toggle-details').simulate('click');
+        expect(EventWrapper.state('isHidden')).toBe(true);
+        expect(EventWrapper.find('.details')).toHaveLength(0);
+        expect(EventWrapper.find('.toggle-details').text()).toBe('Show Details');
+    });
 })
