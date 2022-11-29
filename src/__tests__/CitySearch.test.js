@@ -11,6 +11,8 @@ describe('<CitySearch /> Component', () => {
         CitySearchWrapper = shallow(<CitySearch locations={locations} />);
     });
 
+    // FEATURE 1, SCENARIO 2: Show a list of suggestions during search
+
     test('render text input', () => {
         expect(CitySearchWrapper.find('.city')).toHaveLength(1);
     });
@@ -52,5 +54,15 @@ describe('<CitySearch /> Component', () => {
             return location.toUpperCase().indexOf(query.toUpperCase()) > -1; 
         });
         expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
+    });
+
+    // FEATURE 1, SCENARIO 3: User can select a city from the list of suggestions
+    test('selecting a suggestion should change query state', () => {
+        CitySearchWrapper.setState({
+            query: 'Berlin'
+        });
+        const suggestions = CitySearchWrapper.state('suggestions');
+        CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
+        expect(CitySearchWrapper.state('query')).toBe(suggestions[0]);
     });
 });
