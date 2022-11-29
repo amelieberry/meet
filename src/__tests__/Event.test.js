@@ -32,10 +32,7 @@ describe('<Event /> component', () => {
 
     // check if event information exists
     test('render event information', () => {
-        expect(EventWrapper.find('.information')).toHaveLength(1);
-        expect(EventWrapper.find('.date')).toHaveLength(1);
-        expect(EventWrapper.find('.time')).toHaveLength(1);
-        expect(EventWrapper.find('.location')).toHaveLength(1);
+        expect(EventWrapper.find('.information', '.date', '.time', '.location')).toHaveLength(1);
     });
 
     // check if event information is correctly rendered with date, time and location
@@ -53,27 +50,38 @@ describe('<Event /> component', () => {
     // check if details are hidden by default and that the button's text is set to "Show Details"
     test('do not render details by default', () => {
         expect(EventWrapper.find('.details')).toHaveLength(0);
-        expect(EventWrapper.find('.toggle-details').text()).toBe('Show Details')
+        expect(EventWrapper.find('.toggle-details').text()).toBe('Show Details');
     });
+
     /**
      * FEATURE 2, SCENARIO 2 - User can expand an event to see its details
      * 
-     * user clicks on display-details button
-     * user should see a list of details of the event (htmlLink, description)
+     * user clicks on toggle-details button
+     * user should see a list of details of the event (title, htmlLink, description) 
+     * and button text should toggle to "Hide Details"
      */
 
-    // simulate click on display-details button and check if .details exists
+    // simulate click on toggle-details button and check if .details exists
+    test('render details of the event on click', () => {
+        EventWrapper.find('.toggle-details').simulate('click');
+        expect(EventWrapper.find('.details')).toHaveLength(1);
+    });
 
     // check if the details of the event are rendered correctly
+    test('render details of event correctly', () => {
+        expect(EventWrapper.find('.details-title').text()).toBe('About the event:');
+        expect(EventWrapper.find('.details-link').prop('href')).toBe(event.htmlLink);
+        expect(EventWrapper.find('.details-description').text()).toBe(event.description);
+        expect(EventWrapper.find('.toggle-details').text()).toBe('Hide Details');
+    });
 
     /**
      * FEATURE 2, SCENARIO 3 - User can collapse an event to hide its details
      * 
-     * user clicks on hide-details button
+     * user clicks on toggle-details button while the details are showing
      * details of the event get hidden on button click
+     * and button text should toggle to "Show Details"
      */
 
-    // check if hide-details button exists
-
-    // simulate click on hide-details button and check if .details has been hidden
+    // simulate click on hide-details button, check if .details has been hidden and that button text changed
 })
