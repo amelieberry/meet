@@ -3,6 +3,12 @@ import React, { Component } from "react";
 class Event extends Component {
     state = { isHidden: true };
 
+    toggleDetails = () => {
+        this.setState((currentState) => ({
+            isHidden: !currentState.isHidden
+        }));
+    }
+
     render() {
         const { event } = this.props;
         const { isHidden } = this.state;
@@ -16,10 +22,18 @@ class Event extends Component {
                 </div>
                 {!isHidden && (
                     <div className="details">
-                        <p className="details-title">About the event:</p>
+                        <h3 className="details-title">About the event:</h3>
+                        <a 
+                        className="details-link"
+                        href={event.htmlLink}
+                        >See details on Google Calendar</a>
+                        <p className="details-description">{event.description}</p>
                     </div>
                 )}
-                <button className="toggle-details">{isHidden ? 'Show Details' : 'Hide Details' }</button>
+                <button
+                 className="toggle-details"
+                 onClick={() => this.toggleDetails()}
+                 >{isHidden ? 'Show Details' : 'Hide Details' }</button>
             </div>     
         );
     }
