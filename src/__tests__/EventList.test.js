@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 import EventList from "../EventList";
 import Event from '../Event';
 
+// test EventList and Event components
 describe('<EventList /> component', () => {
     test('render correct number of events', () => {
         const EventListWrapper = shallow(<EventList events={[{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]} />);
