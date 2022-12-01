@@ -8,7 +8,7 @@ describe('<CitySearch /> Component', () => {
     let locations, CitySearchWrapper;
     beforeAll(() => {
         locations = extractLocations(mockData);
-        CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+        CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
     });
 
     // FEATURE 1, SCENARIO 2: Show a list of suggestions during search
