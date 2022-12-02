@@ -14,24 +14,24 @@ class Event extends Component {
         const { isHidden } = this.state;
         return (
             <div className="event">
-                <h2 className="summary">{event.summary}</h2>
-                <div className="information">
+                <h2 className="summary text-2xl">{event.summary}</h2>
+                <div className="information my-3">
                     <p className="date">{event.start.dateTime}</p>
                     <p className="time">{event.start.timeZone}</p>
                     <p className="location">{event.location}</p>
                 </div>
                 {!isHidden && (
                     <div className="details">
-                        <h3 className="details-title">About the event:</h3>
+                        <h3 className="details-title text-lg font-semibold mb-2">About the event:</h3>
+                        <p className="details-description my-2">{event.description}</p>
                         <a 
-                        className="details-link"
+                        className="details-link underline underline-offset-4 block mb-6"
                         href={event.htmlLink}
                         >See details on Google Calendar</a>
-                        <p className="details-description">{event.description}</p>
                     </div>
                 )}
                 <button
-                 className="toggle-details"
+                 className="toggle-details text-white bg-coral p-2 w-full rounded-md"
                  onClick={() => this.toggleDetails()}
                  >{isHidden ? 'Show Details' : 'Hide Details' }</button>
             </div>     
