@@ -29,14 +29,16 @@ class CitySearch extends Component {
 
     render() {
         return (
-            <div className="CitySearch">
+            <div className="CitySearch w-full md:w-3/6 flex items-center flex-col">
+                <label className="block text-lg font-semibold" >Select a city:
                 <input
                     type="text"
-                    className="city"
+                    className="city block p-2 rounded-md text-base font-normal"
                     value={this.state.query}
                     onChange={this.handleInputChange}
                     onFocus={() => { this.setState({ showSuggestions: true }) }}
                 />
+                </label>
                 <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
                     {this.state.suggestions.map((suggestion) => (
                         <li
