@@ -39,7 +39,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App bg-light-blue text-navy font-sans min-h-screen flex items-center flex-col">
+        <h1 className='text-5xl font-extrabold text-white m-8'>Meet App</h1>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents />
         <EventList events={this.state.events} />
