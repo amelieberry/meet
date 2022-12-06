@@ -24,7 +24,7 @@ class CitySearch extends Component {
             showSuggestions: false
         });
 
-        this.props.updateEvents(suggestion);
+        this.props.updateLocation(suggestion);
     }
 
     render() {
@@ -33,21 +33,22 @@ class CitySearch extends Component {
                 <label className="block text-lg font-semibold" >Select a city:
                 <input
                     type="text"
-                    className="city block p-2 rounded-md text-base font-normal"
+                    className="city block p-2 rounded-md text-base font-normal w-72 mt-2"
                     value={this.state.query}
                     onChange={this.handleInputChange}
                     onFocus={() => { this.setState({ showSuggestions: true }) }}
                 />
                 </label>
-                <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
+                <ul className="suggestions w-72 rounded-md mt-2 text-center" style={this.state.showSuggestions ? {}: { display: 'none' }}>
                     {this.state.suggestions.map((suggestion) => (
                         <li
+                            className="cursor-pointer"
                             key={suggestion}
                             onClick={() => this.handleItemClicked(suggestion)}
                         >{suggestion}</li>
                     ))}
                     <li onClick={() => this.handleItemClicked("all")}>
-                        <b>See all cities</b>
+                        <b className="cursor-pointer">See all cities</b>
                     </li>
                 </ul>
             </div>
