@@ -33,7 +33,7 @@ class CitySearch extends Component {
                 <label className="block text-lg font-semibold" >Select a city:
                 <input
                     type="text"
-                    className="city block p-2 rounded-md text-base font-normal w-72 mt-2"
+                    className="city block p-2 rounded-md text-base font-normal w-72 mt-2 text-navy"
                     value={this.state.query}
                     onChange={this.handleInputChange}
                     onFocus={() => { this.setState({ showSuggestions: true }) }}

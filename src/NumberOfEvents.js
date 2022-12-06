@@ -19,7 +19,7 @@ class NumberOfEvents extends Component {
                 <label className="block text-lg font-semibold">
                     Number of Events
                     <input 
-                    className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 mt-2"
+                    className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 mt-2 text-navy"
                     type="number"
                     value={this.state.eventsNumber}
                     onChange={this.handleInputChange}
