@@ -43,16 +43,19 @@ defineFeature(feature, test => {
 
     // Scenario 3
     test('User can collapse an event to hide its details', ({ given, when, then }) => {
-        given('event detail is shown to user', () => {
-
+        given('event detail is shown to user', async () => {
+            AppWrapper = await mount(<App />);
+            AppWrapper.update();
+            AppWrapper.find('.event .toggle-details').at(0).simulate('click');
         });
 
         when('user clicks on "hide details" button', () => {
-
+            AppWrapper.update();
+            AppWrapper.find('.event .toggle-details').at(0).simulate('click');
         });
 
         then('event details should be collapsed.', () => {
-
+            expect(AppWrapper.find('.event .details')).toHaveLength(0);
         });
     });
 })
