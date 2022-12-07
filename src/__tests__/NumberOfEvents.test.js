@@ -33,13 +33,13 @@ describe('<NumberOfEvents /> Component', () => {
     /**
      * FEATURE 3, SCENARIO 2 - User can change the number of events they want to see
      */
-    //  test('change state when number input changes', () => {
-    //     NumberOfEventsWrapper.setState({
-    //         eventsNum: '13'
-    //     });
-    //     const eventObject = { target: { value: '13' } };
-    //     NumberOfEventsWrapper.find('.NumberOfEvents-input').simulate('change', eventObject);
-    //     expect(NumberOfEventsWrapper.state('eventsNum')).toBe('13');
-    // });
+     test('change state when number input changes', () => {
+        NumberOfEventsWrapper.setState({
+            eventsNumber: 32
+        });
+        const eventObject = { target: { value: 13 } };
+        NumberOfEventsWrapper.find('.NumberOfEvents-input').simulate('change', eventObject);
+        expect(NumberOfEventsWrapper.state('eventsNumber')).toBe(13);
+    });
 
 } )
