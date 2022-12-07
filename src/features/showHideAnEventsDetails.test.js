@@ -7,10 +7,10 @@ const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
 // FEATURE 2
 defineFeature(feature, test => {
+    let AppWrapper;
 
     // Scenario 1
     test('An event element is collapsed by default', ({ given, when, then }) => {
-        let AppWrapper;
         given('the list of events is diplayed', () => {
             AppWrapper = mount(<App/>);
         });
@@ -28,15 +28,16 @@ defineFeature(feature, test => {
     //Scenario 2
     test('User can expand an event to see its details', ({ given, when, then }) => {
         given('the list of events is diplayed', () => {
-
+            AppWrapper = mount(<App/>);
         });
 
         when('user clicks on "show details" button', () => {
-
+            AppWrapper.update();
+            AppWrapper.find('.event .toggle-details').at(0).simulate('click');
         });
 
         then('user should see the details of the event.', () => {
-
+            expect(AppWrapper.find('.event .details')).toHaveLength(1);
         });
     });
 
