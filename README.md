@@ -18,9 +18,9 @@ A serverless and progressive React application using test-driven development (TD
         
     **SCENARIOS** | **Given** |  **When** | **Then**
     ---------- | --- | --- | --- 
-    **Scenario 1** | the list of events is diplayed | the user scrolls through the events list | the event details should be hidden by default   
+    **Scenario 1** | the list of events is diplayed | the user performs no action | the event details should be hidden by default   
     **Scenario 2** | the list of events is diplayed | user clicks on "show details" button | user should see the details of the event
-    **Scenario 3** | event detail is shown to user | user clicks on "hide details" | event details should be collapsed
+    **Scenario 3** | event detail is shown to user | user clicks on "hide details" button | event details should be collapsed
 
 3. **Specify number of events.**
 
