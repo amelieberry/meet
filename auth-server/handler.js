@@ -30,7 +30,7 @@ const oAuth2Client = new google.auth.OAuth2(
  * Generate a URL so users can log in with Google and be authorized to see your calendar
  * After loggin in, they will receive a code as a URL parameter
 */
-module.exports.getAuthURL = async () => {
+module.exports.getAuthURL = async () => { 
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: "offline",
     scope: SCOPES,
@@ -39,7 +39,7 @@ module.exports.getAuthURL = async () => {
   return {
     statusCode: 200,
     headers: {
-      "Access-Control-Allow-Origin": "https://amelieberry.github.io/",
+      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
       authUrl: authUrl,
@@ -72,7 +72,7 @@ module.exports.getAccessToken = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "https://amelieberry.github.io/",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(token),
     };
