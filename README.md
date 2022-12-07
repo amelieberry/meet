@@ -58,6 +58,9 @@ A serverless and progressive React application using test-driven development (TD
 * Google Calendar API
 * OAuth2 authentication flow
 * Tailwind CSS
+* Unit & Integration Testing: Jest, Enzyme
+* Acceptance Testing: Jest Cucumber
+* End-to-end Testing: Puppeteer
 
 ## Live Demo
 https://amelieberry.github.io/meet/
