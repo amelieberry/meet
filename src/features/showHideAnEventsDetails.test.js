@@ -1,4 +1,7 @@
+import React from "react";
+import { mount } from "enzyme";
 import { loadFeature, defineFeature } from "jest-cucumber";
+import App from "../App";
 
 const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 
@@ -7,16 +10,18 @@ defineFeature(feature, test => {
 
     // Scenario 1
     test('An event element is collapsed by default', ({ given, when, then }) => {
+        let AppWrapper;
         given('the list of events is diplayed', () => {
-
+            AppWrapper = mount(<App/>);
         });
 
         when('the user performs no action', () => {
-
+            
         });
 
         then('the event details should be hidden by default.', () => {
-
+            AppWrapper.update();
+            expect(AppWrapper.find('.event .details')).toHaveLength(0);
         });
     });
 
