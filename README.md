@@ -57,6 +57,7 @@ A serverless and progressive React application using test-driven development (TD
 * AWS lambda
 * Google Calendar API
 * OAuth2 authentication flow
+* Tailwind CSS
 
 ## Live Demo
 https://amelieberry.github.io/meet/
