@@ -14,7 +14,7 @@ function EventList(props) {
                 )}
             </ul>
         </div>
-    ); 
-};  
+    );
+};
 
 export default EventList;
