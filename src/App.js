@@ -84,7 +84,7 @@ class App extends Component {
         <NumberOfEvents eventsNumber={this.state.eventsNumber} updateEventsNumber={this.updateEventsNumber} />
         <div className='w-full flex justify-center'>
           {(!isLoaded)
-            ? <div className='loader border-solid border-4 border-white border-t-coral rounded-full animate-spin w-50 h-50'></div>
+            ? <div className='loader border-solid border-4 border-white border-t-coral rounded-full animate-spin w-14 h-14'></div>
             : <EventList events={this.state.events} />}
         </div>
       </div>
