@@ -17,7 +17,7 @@ class Event extends Component {
                 <h2 className="summary text-2xl">{event.summary}</h2>
                 <div className="information my-3">
                     <p className="date">{event.start.dateTime}</p>
-                    <p className="time">{event.start.timeZone}</p>
+                    <p className="time">{event.start.timeZone} time zone</p>
                     <p className="location">{event.location}</p>
                 </div>
                 {!isHidden && (
