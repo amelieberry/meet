@@ -27,6 +27,7 @@ class Event extends Component {
                         <a 
                         className="details-link underline underline-offset-4 block mb-6"
                         href={event.htmlLink}
+                        target='_blank'
                         >See details on Google Calendar</a>
                     </div>
                 )}
