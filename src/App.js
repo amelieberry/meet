@@ -49,14 +49,12 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
-    console.log('not loaded', this.state.isLoaded);
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
           events, locations: extractLocations(events),
           isLoaded: true
         });
-        console.log('loaded', this.state.isLoaded)
       }
     });
   }
