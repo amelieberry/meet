@@ -85,7 +85,7 @@ class App extends Component {
         <div className='w-full flex justify-center'>
           {(!isLoaded)
             ? <div className='loader border-solid border-4 border-white border-t-coral rounded-full animate-spin w-14 h-14'></div>
-            : <EventList events={this.state.events} />}
+            : <EventList events={this.state.events} updateEventsNumber={this.updateEventsNumber} eventsNumber={this.state.eventsNumber} />}
         </div>
       </div>
     );
