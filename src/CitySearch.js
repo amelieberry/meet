@@ -43,7 +43,7 @@ class CitySearch extends Component {
     render() {
         return (
             <div className="CitySearch w-full md:w-3/6 flex items-center flex-col">
-                <label className="block text-lg font-semibold" >Select a city:
+                <label className="block text-lg font-semibold mb-2" >Select a city:
                 <input
                     type="text"
                     className="city block p-2 rounded-md text-base font-normal w-72 mt-2 text-navy"
@@ -52,7 +52,7 @@ class CitySearch extends Component {
                     onFocus={() => { this.setState({ showSuggestions: true }) }}
                 />
                 </label>
-                <InfoAlert text={this.state.infoText} />
+                <InfoAlert className="dark:text-white" text={this.state.infoText} />
                 <ul className="suggestions w-72 rounded-md mt-2 text-center" style={this.state.showSuggestions ? {}: { display: 'none' }}>
                     {this.state.suggestions.map((suggestion) => (
                         <li
