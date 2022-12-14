@@ -27,19 +27,19 @@ class NumberOfEvents extends Component {
 
     render() {
         return (
-            <div className="NumberOfEvents w-full md:w-3/6 flex flex-col items-center m-8">
-                <label className="block text-lg font-semibold">
+            <div className="NumberOfEvents w-full md:w-3/6 flex flex-col items-center m-8 h-24">
+                <label className="block text-lg font-semibold mb-2">
                     Number of Events
                     <input 
                     className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 mt-2 text-navy"
                     type="number"
                     min={1}
-                    max={32}
+                    max={250}
                     value={this.state.eventsNumber}
                     onChange={this.handleInputChange}
                     ></input>
                 </label>
-                <ErrorAlert className="block text-center mt-2" text={this.state.errorMessage} />
+                <ErrorAlert className="block text-center" text={this.state.errorMessage} />
             </div>
         )
     }
