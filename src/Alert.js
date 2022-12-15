@@ -13,9 +13,9 @@ class Alert extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="Alert">
-                <p style={this.getStyle()}>{this.props.text}</p>
+                <p style={this.getStyle()} >{this.props.text}</p>
             </div>
         );
     }
@@ -25,6 +25,13 @@ class InfoAlert extends Alert {
     constructor(props) {
         super(props);
         this.color = 'blue';
+    }
+
+    getStyle = () => {
+        if (document.documentElement.classList.contains('dark'))
+            return {
+                color: '#a8d0e6',
+            };
     }
 }
 
