@@ -9,13 +9,18 @@ class NumberOfEvents extends Component {
 
     handleInputChange = (event) => {
         const value = parseInt(event.target.value);
+        const inputElement = document.getElementById('number-input');
 
         if (value < 1 || !value || value > 250) {
             this.setState({ 
                 eventsNumber: value,
-                errorMessage: 'Please enter a number between 1 and 250',
+                errorMessage: 'Please enter a number between 1 and 250'
             });
+            inputElement.classList.add('focus:outline-none', 'focus:outline-red');          
         } else {
+            if (inputElement.classList.contains('focus:outline-none', 'focus:outline-red')) {
+                inputElement.classList.remove('focus:outline-none', 'focus:outline-red')
+            }
             this.setState({
                 eventsNumber: value,
                 errorMessage: '',
@@ -30,7 +35,8 @@ class NumberOfEvents extends Component {
             <div className="NumberOfEvents w-full md:w-3/6 flex flex-col items-center m-8 h-24">
                 <label className="block text-lg font-semibold mb-2">
                     Number of Events
-                    <input 
+                    <input
+                    id="number-input" 
                     className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 mt-2 text-navy"
                     type="number"
                     min={1}
@@ -39,7 +45,7 @@ class NumberOfEvents extends Component {
                     onChange={this.handleInputChange}
                     ></input>
                 </label>
-                <ErrorAlert className="block text-center" text={this.state.errorMessage} />
+                <ErrorAlert text={this.state.errorMessage} />
             </div>
         )
     }
