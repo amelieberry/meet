@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class Alert extends Component {
     constructor(props) {
         super(props);
-        this.color = null;
     }
 
     getStyle = () => {
@@ -15,7 +14,7 @@ class Alert extends Component {
     render() {
         return (
             <div className="Alert">
-                <p style={this.getStyle()} >{this.props.text}</p>
+                <p className="rounded-lg shadow-sm shadow-orange" style={this.getStyle()}>{this.props.text}</p>
             </div>
         );
     }
@@ -24,14 +23,20 @@ class Alert extends Component {
 class InfoAlert extends Alert {
     constructor(props) {
         super(props);
-        this.color = 'blue';
     }
 
     getStyle = () => {
-        if (document.documentElement.classList.contains('dark'))
+        if (document.documentElement.classList.contains('dark')) {
             return {
                 color: '#a8d0e6',
-            };
+                boxShadow: 'none',
+            }
+        } else {
+            return {
+                color: 'blue',
+                boxShadow: 'none',
+            }
+        }
     }
 }
 
@@ -40,14 +45,27 @@ class ErrorAlert extends Alert {
         super(props);
         this.color = 'red';
     }
+
+    getStyle = () => {
+        return {
+            color: this.color,
+            boxShadow: 'none',
+        }
+    }
 }
 
-// class WarningAlert extends Alert {
-//     constructor(props) {
-//         super(props);
-//         this.color = 'coral';
-//     }
-// }
+class WarningAlert extends Alert {
+    constructor(props) {
+        super(props);
+        
+    }
+    getStyle = () => {
+            return {
+                border: '2px solid #b97551',
+                padding: '10px',
+            }
+    }
+}
 
-export { InfoAlert, ErrorAlert };
+export { InfoAlert, ErrorAlert, WarningAlert };
 
