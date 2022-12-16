@@ -13,7 +13,7 @@ class Event extends Component {
         const { event } = this.props;
         const { isHidden } = this.state;
         return (
-            <div className="event">
+            <div className="event ">
                 <h2 className="summary text-2xl">{event.summary}</h2>
                 <div className="information my-3">
                     <p className="date">{event.start.dateTime}</p>
