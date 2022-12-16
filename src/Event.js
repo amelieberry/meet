@@ -21,7 +21,7 @@ class Event extends Component {
                     <p className="location">{event.location}</p>
                 </div>
                 {!isHidden && (
-                    <div className="details">
+                    <div className="details border-solid border-4 border-coral rounded-t-lg p-4">
                         <h3 className="details-title text-lg font-semibold mb-2">About the event:</h3>
                         <p className="details-description my-2">{event.description}</p>
                         <a 
@@ -32,7 +32,7 @@ class Event extends Component {
                     </div>
                 )}
                 <button
-                 className="toggle-details text-white bg-coral p-2 w-full rounded-md"
+                 className="toggle-details text-dark-navy bg-coral p-2 w-full rounded-b-lg"
                  onClick={() => this.toggleDetails()}
                  >{isHidden ? 'Show Details' : 'Hide Details' }</button>
             </div>     
