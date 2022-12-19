@@ -46,14 +46,14 @@ class CitySearch extends Component {
                 <label className="block text-lg font-semibold mb-2" >Select a city:
                 <input
                     type="text"
-                    className="city block p-2 rounded-md text-base font-normal w-72 mt-2 text-navy dark:bg-light-blue"
+                    className="city block p-2 rounded-md text-base font-normal w-72 mt-2 text-dark-navy bg-white/80 dark:bg-light-blue/80"
                     value={this.state.query}
                     onChange={this.handleInputChange}
                     onFocus={() => { this.setState({ showSuggestions: true }) }}
                 />
                 </label>
                 <InfoAlert className="dark:text-white" text={this.state.infoText} />
-                <ul className="suggestions w-72 rounded-md mt-2 text-center" style={this.state.showSuggestions ? {}: { display: 'none' }}>
+                <ul className="suggestions w-72 rounded-md mt-2 text-center" style={this.state.showSuggestions ? {} : { display: 'none' }}>
                     {this.state.suggestions.map((suggestion) => (
                         <li
                             className="cursor-pointer"
