@@ -3,7 +3,8 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { extractLocations, getEvents } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { checkToken, getAccessToken, extractLocations, getEvents } from './api';
 import { WarningAlert } from './Alert';
 import './nprogress.css';
 
@@ -13,7 +14,8 @@ class App extends Component {
     locations: [],
     eventsNumber: 32,
     isLight: true,
-    isLoaded: false
+    isLoaded: false,
+    showWelcomeScreen: undefined,
   }
 
   updateLocation = (location) => {
@@ -46,16 +48,24 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events, locations: extractLocations(events),
-          isLoaded: true
-        });
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events, locations: extractLocations(events),
+            isLoaded: true
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -63,7 +73,10 @@ class App extends Component {
   }
 
   render() {
-    const { isLight, isLoaded } = this.state;
+    const { showWelcomeScreen, isLight, isLoaded } = this.state;
+
+    if (showWelcomeScreen === undefined) return <div className='App'/>
+
     return (
       <div className="App bg-light-blue dark:bg-navy text-navy dark:text-white text-lg font-sans min-h-screen flex items-center flex-col tracking-wide">
         <button
@@ -91,6 +104,7 @@ class App extends Component {
             ? <div className='loader border-solid border-4 border-white border-t-coral rounded-full animate-spin w-14 h-14'></div>
             : <EventList events={this.state.events} updateEventsNumber={this.updateEventsNumber} eventsNumber={this.state.eventsNumber} />}
         </div>
+        <WelcomeScreen showWelcomeScreen={showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
