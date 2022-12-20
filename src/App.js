@@ -75,7 +75,7 @@ class App extends Component {
   render() {
     const { showWelcomeScreen, isLight, isLoaded } = this.state;
 
-    if (showWelcomeScreen === undefined) return <div className='App'/>;
+    if (showWelcomeScreen === undefined) return <div className='App' />;
 
     return (
       <div className="App bg-light-blue dark:bg-navy text-navy dark:text-white text-lg font-sans min-h-screen flex items-center flex-col tracking-wide">
@@ -94,7 +94,7 @@ class App extends Component {
         <h1 className='text-5xl font-extrabold text-navy dark:text-coral my-11'>Meet App</h1>
         <CitySearch locations={this.state.locations} updateLocation={this.updateLocation} />
         <NumberOfEvents eventsNumber={this.state.eventsNumber} updateEventsNumber={this.updateEventsNumber} />
-        <div className='WarningAlert mb-9'>
+        <div className='WarningAlert mb-9 mx-2 text-center'>
           {!navigator.onLine && (
             <WarningAlert text={'You are currently offline, the events may not be up to date.'} />
           )}
