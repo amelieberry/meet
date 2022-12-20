@@ -7,6 +7,7 @@ import WelcomeScreen from './WelcomeScreen';
 import { checkToken, getAccessToken, extractLocations, getEvents } from './api';
 import { WarningAlert } from './Alert';
 import './nprogress.css';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 class App extends Component {
   state = {
@@ -48,6 +49,16 @@ class App extends Component {
     }
   }
 
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return { city, number };
+    })
+    return data;
+  }
+
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
@@ -56,16 +67,25 @@ class App extends Component {
     const code = searchParams.get('code');
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
 
-    if ((code || isTokenValid) && this.mounted) {
-      getEvents().then((events) => {
-        if (this.mounted) {
-          this.setState({
-            events, locations: extractLocations(events),
-            isLoaded: true
-          });
-        }
-      });
-    }
+    getEvents().then((events) => {
+      if (this.mounted) {
+        this.setState({
+          events, locations: extractLocations(events),
+          isLoaded: true
+        });
+      }
+    });
+
+    // if ((code || isTokenValid) && this.mounted) {
+    //   getEvents().then((events) => {
+    //     if (this.mounted) {
+    //       this.setState({
+    //         events, locations: extractLocations(events),
+    //         isLoaded: true
+    //       });
+    //     }
+    //   });
+    // }
   }
 
   componentWillUnmount() {
@@ -75,7 +95,7 @@ class App extends Component {
   render() {
     const { showWelcomeScreen, isLight, isLoaded } = this.state;
 
-    if (showWelcomeScreen === undefined) return <div className='App' />;
+    // if (showWelcomeScreen === undefined) return <div className='App' />;
 
     return (
       <div className="App bg-light-blue dark:bg-navy text-navy dark:text-white text-lg font-sans min-h-screen flex items-center flex-col tracking-wide">
@@ -99,12 +119,22 @@ class App extends Component {
             <WarningAlert text={'You are currently offline, the events may not be up to date.'} />
           )}
         </div>
+        <ResponsiveContainer height={400}>
+          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
+            <CartesianGrid />
+            <XAxis type='category' dataKey="city" name="city" />
+            <YAxis type='number' dataKey="number" name="number of events" allowDecimals={false} />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter data={this.getData()} fill="#8884d8" className='dark:fill-coral'/>
+          </ScatterChart>
+        </ResponsiveContainer>
+
         <div className='w-full flex justify-center'>
           {(!isLoaded)
             ? <div className='loader border-solid border-4 border-white border-t-coral rounded-full animate-spin w-14 h-14'></div>
             : <EventList events={this.state.events} updateEventsNumber={this.updateEventsNumber} eventsNumber={this.state.eventsNumber} />}
         </div>
-        <WelcomeScreen showWelcomeScreen={showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
+        {/* <WelcomeScreen showWelcomeScreen={showWelcomeScreen} getAccessToken={() => { getAccessToken() }} /> */}
       </div>
     );
   }
