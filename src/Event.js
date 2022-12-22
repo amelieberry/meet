@@ -32,7 +32,7 @@ class Event extends Component {
                     </div>
                 )}
                 <button
-                 className="toggle-details text-dark-navy bg-coral p-2 w-full rounded-b-lg"
+                 className="toggle-details text-dark-navy bg-coral p-2 w-full rounded-b-lg outline-none"
                  onClick={() => this.toggleDetails()}
                  >{isHidden ? 'Show Details' : 'Hide Details' }</button>
             </div>     
