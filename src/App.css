@@ -1,6 +1,7 @@
 .carousel {
     height: 440px;
 }
+
 .carousel .control-dots .dot {
     border-radius: 5px !important;
     width: fit-content !important;
