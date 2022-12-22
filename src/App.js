@@ -3,11 +3,14 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import EventGenre from './EventGenre';
 import WelcomeScreen from './WelcomeScreen';
 import { checkToken, getAccessToken, extractLocations, getEvents } from './api';
 import { WarningAlert } from './Alert';
 import './nprogress.css';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 class App extends Component {
   state = {
@@ -67,25 +70,25 @@ class App extends Component {
     const code = searchParams.get('code');
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
 
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events, locations: extractLocations(events),
-          isLoaded: true
-        });
-      }
-    });
+    // getEvents().then((events) => {
+    //   if (this.mounted) {
+    //     this.setState({
+    //       events, locations: extractLocations(events),
+    //       isLoaded: true
+    //     });
+    //   }
+    // });
 
-    // if ((code || isTokenValid) && this.mounted) {
-    //   getEvents().then((events) => {
-    //     if (this.mounted) {
-    //       this.setState({
-    //         events, locations: extractLocations(events),
-    //         isLoaded: true
-    //       });
-    //     }
-    //   });
-    // }
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events, locations: extractLocations(events),
+            isLoaded: true
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -93,12 +96,12 @@ class App extends Component {
   }
 
   render() {
-    const { showWelcomeScreen, isLight, isLoaded } = this.state;
+    const { events, showWelcomeScreen, isLight, isLoaded } = this.state;
 
-    // if (showWelcomeScreen === undefined) return <div className='App' />;
+    if (showWelcomeScreen === undefined) return <div className='App' />;
 
     return (
-      <div className="App bg-light-blue dark:bg-navy text-navy dark:text-white text-lg font-sans min-h-screen flex items-center flex-col tracking-wide">
+      <div className="App bg-white dark:bg-dark-navy text-navy dark:text-white text-lg font-sans min-h-screen flex items-center flex-col tracking-wide">
         <button
           id='theme-toggle'
           aria-label="toggleTheme"
@@ -112,29 +115,36 @@ class App extends Component {
           </svg>
           }</button>
         <h1 className='text-5xl font-extrabold text-navy dark:text-coral my-11'>Meet App</h1>
-        <CitySearch locations={this.state.locations} updateLocation={this.updateLocation} />
-        <NumberOfEvents eventsNumber={this.state.eventsNumber} updateEventsNumber={this.updateEventsNumber} />
+        <div className='w-full flex flex-wrap justify-center'>
+          <CitySearch locations={this.state.locations} updateLocation={this.updateLocation} />
+          <NumberOfEvents eventsNumber={this.state.eventsNumber} updateEventsNumber={this.updateEventsNumber} />
+        </div>
         <div className='WarningAlert mb-9 mx-2 text-center'>
           {!navigator.onLine && (
             <WarningAlert text={'You are currently offline, the events may not be up to date.'} />
           )}
         </div>
-        <ResponsiveContainer height={400}>
-          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
-            <CartesianGrid />
-            <XAxis type='category' dataKey="city" name="city" />
-            <YAxis type='number' dataKey="number" name="number of events" allowDecimals={false} />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter data={this.getData()} fill="#8884d8" className='dark:fill-coral'/>
-          </ScatterChart>
-        </ResponsiveContainer>
-
-        <div className='w-full flex justify-center'>
+        <h2 className="text-4xl mb-4 text-center font-bold text-navy dark:text-coral">Charts</h2>
+        {!showWelcomeScreen && (
+          <Carousel showThumbs={false} showStatus={false} showArrows={false} className='data-vis-wrapper w-full mx-6'>
+          <EventGenre className="mb-20" events={events} />
+          <ResponsiveContainer height={400}>
+            <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} >
+              <CartesianGrid strokeDasharray="3 3" stroke='#a6afbd' />
+              <XAxis type='category' dataKey="city" name="city" />
+              <YAxis type='number' dataKey="number" name="number of events" allowDecimals={false} />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" className='dark:fill-coral' />
+            </ScatterChart>
+          </ResponsiveContainer>
+        </Carousel>
+        )}
+        <div className='w-full flex justify-center mt-4'>
           {(!isLoaded)
             ? <div className='loader border-solid border-4 border-white border-t-coral rounded-full animate-spin w-14 h-14'></div>
-            : <EventList events={this.state.events} updateEventsNumber={this.updateEventsNumber} eventsNumber={this.state.eventsNumber} />}
+            : <EventList events={events} updateEventsNumber={this.updateEventsNumber} eventsNumber={this.state.eventsNumber} />}
         </div>
-        {/* <WelcomeScreen showWelcomeScreen={showWelcomeScreen} getAccessToken={() => { getAccessToken() }} /> */}
+        <WelcomeScreen showWelcomeScreen={showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
