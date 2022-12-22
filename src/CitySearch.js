@@ -89,7 +89,7 @@ class CitySearch extends Component {
                             key={suggestion}
                             onClick={() => this.handleItemClicked(suggestion)}
                         >{suggestion}</li>
-                    ))} {console.log(this.state.suggestions)}
+                    ))}
                     <li onClick={() => this.handleItemClicked("all")}>
                         <b className="cursor-pointer">See all cities</b>
                     </li>
