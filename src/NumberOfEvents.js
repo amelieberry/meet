@@ -32,12 +32,12 @@ class NumberOfEvents extends Component {
 
     render() {
         return (
-            <div className="NumberOfEvents w-full md:w-3/6 flex flex-col items-center m-8 h-24">
-                <label className="block text-lg font-semibold mb-2">
+            <div className="NumberOfEvents flex flex-col items-center m-2">
+                <label className="block text-lg font-semibold">
                     Number of Events
                     <input
                     id="number-input" 
-                    className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 mt-2  text-dark-navy bg-white/80 dark:bg-light-blue/80"
+                    className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 text-dark-navy bg-white dark:bg-light-blue"
                     type="number"
                     min={1}
                     max={250}
