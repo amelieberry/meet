@@ -61,14 +61,14 @@ class CitySearch extends Component {
                     <input
                         id="city-input"
                         type="text"
-                        className="city block p-2 rounded-md text-base font-normal w-72 text-dark-navy bg-white dark:bg-light-blue focus:outline-none"
+                        className="city block p-2 rounded-md text-base font-normal w-72 text-dark-navy bg-light-blue focus:outline-none"
                         value={this.state.query}
                         onChange={this.handleInputChange}
                         onFocus={this.handleFocus}
                     />
                 </label>
                 <ul 
-                    className="suggestions h-36 max-h-40 overflow-auto mt-2 w-72 rounded-md text-center bg-white dark:bg-light-blue dark:text-navy z-90" 
+                    className="suggestions h-36 max-h-40 overflow-auto mt-2 w-72 rounded-md text-center bg-light-blue text-navy z-90" 
                     style={this.state.showSuggestions ? {} : { display: 'none' }}
                 >
                     <div className="block text-right h-7">

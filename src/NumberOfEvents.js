@@ -37,7 +37,7 @@ class NumberOfEvents extends Component {
                     Number of Events
                     <input
                     id="number-input" 
-                    className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 text-dark-navy bg-white dark:bg-light-blue"
+                    className="NumberOfEvents-input block p-2 rounded-md text-base font-normal w-72 text-dark-navy bg-light-blue"
                     type="number"
                     min={1}
                     max={250}
