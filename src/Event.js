@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment/moment";
 
 class Event extends Component {
     state = { isHidden: true };
@@ -16,7 +17,7 @@ class Event extends Component {
             <div className="event ">
                 <h2 className="summary text-2xl">{event.summary}</h2>
                 <div className="information my-3">
-                    <p className="date">{event.start.dateTime}</p>
+                    <p className="date">{moment(event.start.dateTime).format('MMMM Do YYYY, h:mm:ss a')}</p>
                     <p className="time">{event.start.timeZone} time zone</p>
                     <p className="location">{event.location}</p>
                 </div>
