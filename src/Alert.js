@@ -26,16 +26,10 @@ class InfoAlert extends Alert {
     }
 
     getStyle = () => {
-        if (document.documentElement.classList.contains('dark')) {
-            return {
-                color: '#a8d0e6',
-                boxShadow: 'none',
-            }
-        } else {
-            return {
-                color: 'blue',
-                boxShadow: 'none',
-            }
+        return {
+            color: 'blue',
+            boxShadow: 'none',
+            fontSize: '1rem',
         }
     }
 }
