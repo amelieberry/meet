@@ -1,0 +1,18 @@
+.carousel {
+    height: 440px;
+}
+.carousel .control-dots .dot {
+    border-radius: 5px !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    padding: 0 4px;
+    background: none !important;
+  }
+
+  .carousel .control-dots .dot:first-child::before {
+    content: 'PieChart';
+  }
+
+  .carousel .control-dots .dot:last-child::before {
+    content: 'ScatterChart';
+  }
