@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Pie, PieChart, ResponsiveContainer, Cell } from "recharts";
+import { Pie, PieChart, ResponsiveContainer, Cell, Legend } from "recharts";
 
 const EventGenre = ({ events }) => {
     const [data, setData] = useState([]);
 
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#fd768c'];
 
     useEffect(() => {
         const getData = () => {
@@ -36,11 +36,11 @@ const EventGenre = ({ events }) => {
             <PieChart >
                 <Pie
                     data={data}
-                    // cx="50%"
-                    // cy="50%"
+                    cx="50%"
+                    cy="50%"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={80}
+                    outerRadius={100}
                     fill="#8884d8"
                     dataKey="value"
                 >
@@ -48,6 +48,7 @@ const EventGenre = ({ events }) => {
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                 </Pie>
+                <Legend verticalAlign="top" height={36} />
             </PieChart>
         </ResponsiveContainer>
     );
