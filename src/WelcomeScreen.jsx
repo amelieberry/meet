@@ -3,13 +3,13 @@ import React from "react";
 function WelcomeScreen(props) {
     return props.showWelcomeScreen ?
     (
-        <div className="WelcomeScreen text-center bg-light-blue fixed top-0 w-full h-full px-4">
-            <h1 className="text-5xl font-extrabold dark:text-coral my-11">Welcome to the Meet App</h1>
+        <div className="WelcomeScreen text-center text-navy bg-white fixed top-0 w-full h-screen px-4">
+            <h1 className="text-5xl font-extrabold my-11">Welcome to the Meet App</h1>
             <h4>
                 Log in to see upcoming events around the world for full-stack developers
             </h4>
-            <div className="button_cont bg-white max-w-xl py-8 my-8 mx-auto rounded-md">
-                <div className="google-btn  rounded-md w-60 h-11 mx-auto bg-light-blue shadow-md shadow-navy active:shadow-inner active:translate-y-px">
+            <div className="button_cont bg-light-blue max-w-xl py-8 my-8 mx-auto rounded-md">
+                <div className="google-btn  rounded-md w-60 h-11 mx-auto bg-white shadow-md shadow-navy active:shadow-inner active:translate-y-px">
                     <div className="google-icon-wrapper absolute w-10 h-10 ml-2 mt-px">
                         <img 
                             className="google-icon h-7 w-7 absolute mt-1.5 ml-1.5"
