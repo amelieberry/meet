@@ -52,6 +52,10 @@ A serverless and progressive React application using test-driven development (TD
     ---------- | --- | --- | --- 
     **Scenario 1** | user hasn't searched for any city | the user opens the app | the user should see a chart of upcoming events by city 
 
+## App Screenshots
+![A screenshot of city-search and event number inputs and charts ](./public/input-and-chart-capture.JPG)
+![A screenshot of the events list](./public/events-capture.JPG)
+
 ## Built with
 * React
 * AWS lambda
