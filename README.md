@@ -66,5 +66,6 @@ A serverless and progressive React application using test-driven development (TD
 * Acceptance Testing: Jest Cucumber
 * End-to-end Testing: Puppeteer
 
-## Live Demo
-https://amelieberry.github.io/meet/
+## Links
+* Demo Video: https://youtu.be/JH5c-nYtTCE
+* Live App: https://amelieberry.github.io/meet/
